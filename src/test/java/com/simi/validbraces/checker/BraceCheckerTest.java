@@ -18,6 +18,11 @@ public class BraceCheckerTest {
   }
 
   @Test
+  public void givenAllOpenBraces_whenBraceCheckerVerify_thenInvalidBraces() {
+    assertEquals(false, checker.isValid("{{{{"));
+  }
+
+  @Test
   public void givenInvalidPairs_whenBraceCheckerVerify_thenInvalidBraces() {
     assertEquals(false, checker.isValid("(){]"));
   }

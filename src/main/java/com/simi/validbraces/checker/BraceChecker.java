@@ -29,7 +29,7 @@ public class BraceChecker {
         inputStack.push(brace);
       }
     }
-    return true;
+    return inputStack.isEmpty();
   }
 
   private boolean hasOddBraces(String braces) {
