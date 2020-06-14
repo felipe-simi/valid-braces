@@ -17,6 +17,9 @@ public class BraceChecker {
     for (int i = 0; i < braces.length(); i++) {
       final var brace = braces.charAt(i);
       if (bracesPair.containsKey(brace)) {
+        if (inputStack.isEmpty()) {
+          return false;
+        }
         final var poppedBrace = inputStack.pop();
         final var expectedPair = bracesPair.get(brace);
         if (!poppedBrace.equals(expectedPair)) {

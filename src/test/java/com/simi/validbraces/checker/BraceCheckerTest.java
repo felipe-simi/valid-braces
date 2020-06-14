@@ -22,4 +22,9 @@ public class BraceCheckerTest {
     assertEquals(false, checker.isValid("(){]"));
   }
 
+  @Test
+  public void givenUnorderedPairs_whenBraceCheckerVerify_thenInvalidBraces() {
+    assertEquals(false, checker.isValid("()]["));
+  }
+
 }
