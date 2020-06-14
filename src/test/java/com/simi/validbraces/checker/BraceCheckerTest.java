@@ -12,4 +12,9 @@ public class BraceCheckerTest {
     assertEquals(true, checker.isValid("()"));
   }
 
+  @Test
+  public void givenIncompletePair_whenBraceCheckerVerify_thenInvalidBraces() {
+    assertEquals(false, checker.isValid("("));
+  }
+
 }
