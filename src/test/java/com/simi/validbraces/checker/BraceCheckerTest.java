@@ -13,6 +13,11 @@ public class BraceCheckerTest {
   }
 
   @Test
+  public void givenNestedPairs_whenBraceCheckerVerify_thenValidBraces() {
+    assertEquals(true, checker.isValid("({})"));
+  }
+
+  @Test
   public void givenIncompletePair_whenBraceCheckerVerify_thenInvalidBraces() {
     assertEquals(false, checker.isValid("("));
   }
