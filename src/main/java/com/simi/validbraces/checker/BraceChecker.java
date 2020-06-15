@@ -16,15 +16,14 @@ public class BraceChecker {
       return false;
     }
     for (final var brace : braces.toCharArray()) {
+      if (isValidClosingBrace(inputStack, brace)) {
+        return false;
+      }
       if (bracesPair.containsKey(brace)) {
-        if (inputStack.isEmpty()) {
+        if (isNotClosingBrace(inputStack, brace)) {
           return false;
         }
-        final var poppedBrace = inputStack.pop();
-        final var expectedPair = bracesPair.get(brace);
-        if (!poppedBrace.equals(expectedPair)) {
-          return false;
-        }
+        inputStack.pop();
       } else {
         inputStack.push(brace);
       }
@@ -32,8 +31,18 @@ public class BraceChecker {
     return inputStack.isEmpty();
   }
 
-  private boolean hasOddBraces(String braces) {
+  private boolean isNotClosingBrace(final ArrayDeque<Character> inputStack, final char brace) {
+    final var poppedBrace = inputStack.peek();
+    final var expectedPair = bracesPair.get(brace);
+    return !poppedBrace.equals(expectedPair);
+  }
+
+  private boolean hasOddBraces(final String braces) {
     return braces == null || braces.length() % 2 == 1;
+  }
+
+  private boolean isValidClosingBrace(final ArrayDeque<Character> inputStack, final char brace) {
+    return inputStack.isEmpty() && bracesPair.containsKey(brace);
   }
 
 }
