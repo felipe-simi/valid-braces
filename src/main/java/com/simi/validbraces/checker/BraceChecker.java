@@ -4,7 +4,8 @@ import java.util.ArrayDeque;
 import java.util.Map;
 
 public class BraceChecker {
-  Map<Character, Character> bracesPair = Map.of(
+
+  private final Map<Character, Character> bracesPair = Map.of(
       ')', '(',
       '}', '{',
       ']', '[');
@@ -14,8 +15,7 @@ public class BraceChecker {
     if (hasOddBraces(braces)) {
       return false;
     }
-    for (int i = 0; i < braces.length(); i++) {
-      final var brace = braces.charAt(i);
+    for (final var brace : braces.toCharArray()) {
       if (bracesPair.containsKey(brace)) {
         if (inputStack.isEmpty()) {
           return false;
